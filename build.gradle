@@ -21,7 +21,7 @@ repositories {
 }
 
 base {
-    archivesName = mod_id
+    archivesName = MOD_ID
 }
 
 // Mojang ships Java 21 to end users starting in 1.20.5, so mods should target Java 21.
@@ -133,6 +133,8 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
@@ -163,7 +165,7 @@ sourceSets.main.resources.srcDir generateModMetadata
 neoForge.ideSyncTask generateModMetadata
 
 // Example configuration to allow publishing using the maven-publish plugin
-publishing {
+publishing
     publications {
         register('mavenJava', MavenPublication) {
             from components.java
@@ -171,10 +173,8 @@ publishing {
     }
     repositories {
         maven {
-            url "file://${project.projectDir}/repo"
-        }
+            url "file://${project.projectDir}/repo" }
     }
-}
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
